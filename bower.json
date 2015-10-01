@@ -1,0 +1,24 @@
+{
+  "name": "Elgea FrontEnd",
+  "description": "A starter project for Elgea with AngularJS",
+  "version": "0.0.0",
+  "homepage": "https://github.com/kimsrung/AngularJs",
+  "authors": [
+    "kimsrung.lov@gmail.com"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "angular-resource": "1.4.4",
+    "angular-material": "0.11.0-rc2-master-c0c52a8",
+    "angular-ui-router": "~0.2.15",
+    "angular-loader": "~1.4.0",
+    "angular-mocks": "~1.4.0",
+    "html5-boilerplate": "~5.2.0",
+    "angular-messages": "1.4.4",
+    "angular-animate": "1.4.4",
+    "angular-aria": "1.4.4"
+  },
+  "resolutions": {
+    "angular": "1.4.4"
+  }
+}
