@@ -1,0 +1,32 @@
+<div layout="row" layout-align="start center">
+  <div flex class="flex-20 recettes padding-left margin-right-4" layout="row" layout-align="start center">Recettes</div>
+  <div flex class="flex"></div>
+</div>
+
+<div ng-repeat="recette in ctrl.recettes">
+  <div layout="row" layout-align="start center">
+    <div flex class="flex-20 padding-left recette-list-title margin-right-4" layout="row" layout-align="start center">
+      <md-icon md-svg-src="{{recette.expandIconUrl}}" class="s24" aria-label="more or less" ng-click="ctrl.onClickExpandToggle(recette)"></md-icon>
+      {{recette.value}}
+    </div>
+    <div flex class="flex recette-list-title" layout="row" layout-align="end center" ng-repeat="(key, value) in recette.totalMonthly"> {{value}} <span ng-if="value">€</span></div>
+  </div>
+  <div layout="row" layout-align="start center" ng-repeat="material in recette.materials" ng-show="recette.expandStatus">
+    <div flex class="flex-20 padding-left-50 recette-list margin-right-4" layout="row" layout-align="start center">{{material.name}}</div>
+    <div flex class="flex recette-list" layout="row" layout-align="end center" ng-repeat="(key, value) in material.months">
+      {{value}} <span ng-if="value">€</span>
+    </div>
+  </div>
+</div>
+<div layout="row" layout-align="start center" class="margin-top-5">
+  <div flex class="flex-20 total-recette padding-left margin-right-4" layout="row" layout-align="start center">
+    TOTAL RECETTES MONL
+  </div>
+  <div flex class="flex total-recette" layout="row" layout-align="end center" ng-repeat="report in ctrl.monthlyReport"> {{report.totalRecettes}} €</div>
+</div>
+<div layout="row" layout-align="start center">
+  <div flex class="flex-20 total-recette padding-left margin-right-4" layout="row" layout-align="start center">
+    TOTAL RECETTES CUMULAN
+  </div>
+  <div flex class="flex total-recette" layout="row" layout-align="end center" ng-repeat="report in ctrl.monthlyReport"> {{report.totalRecettesCumulan}} €</div>
+</div>

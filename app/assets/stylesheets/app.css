@@ -2,3 +2,127 @@
   width: 100px;
   margin: 16px 24px;
 }
+
+.btn-search {
+  margin-bottom: 26px;
+}
+
+.search-wrapper {
+  border: 1px solid #aaa;
+  padding: 5px 16px;
+}
+
+.search-title {
+  top: 16px;
+  position: absolute;
+  background-color: #fff;
+}
+
+.select-filter {
+  width: 100%;
+}
+
+.padding-left {
+  padding-left: 16px;
+}
+
+.margin-right-4 {
+  margin-right: 4px;
+}
+
+.margin-top-5 {
+  margin-top: 5px;
+}
+
+.margin-top-20 {
+  margin-top: 20px;
+}
+
+.margin-top-30 {
+  margin-top: 30px;
+}
+
+.padding-left-50 {
+  padding-left: 50px;
+}
+
+.grid-view {
+  font-weight: 500;
+}
+
+.list-date {
+  color: #fff;
+  height: 42px;
+  border: 1px solid;
+  background-color: #006064;
+}
+
+.recettes{
+  color: #fff;
+  height: 42px;
+  border: 1px solid;
+  background-color: #00C853;
+}
+
+.recette-list-title {
+  height: 42px;
+  padding-right: 16px;
+  border: 1px solid #fff;
+  background-color: #BDBDBD;
+}
+
+.recette-list {
+  color: #fff;
+  height: 42px;
+  border: 1px solid;
+  padding-right: 16px;
+  background-color: #43A047;
+}
+
+.total-recette {
+  height: 42px;
+  border: 1px solid #43A047;
+  padding-right: 16px;
+}
+
+.depenses{
+  color: #fff;
+  height: 42px;
+  border: 1px solid;
+  background-color: #FF5722;
+}
+
+.depense-list-title {
+  height: 42px;
+  padding-right: 16px;
+  border: 1px solid #fff;
+  background-color: #BDBDBD;
+}
+
+.depense-list {
+  color: #fff;
+  height: 42px;
+  border: 1px solid;
+  padding-right: 16px;
+  background-color: #FFC107;
+}
+
+.total-depense {
+  height: 42px;
+  border: 1px solid #FFC107;
+  padding-right: 16px;
+}
+
+.total-transition {
+  height: 42px;
+  border: 1px solid #E53935;
+  padding-right: 16px;
+}
+
+md-icon {
+  margin: 0;
+}
+
+md-icon:hover {
+  cursor: pointer;
+}

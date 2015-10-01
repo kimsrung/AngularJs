@@ -1,0 +1,32 @@
+<div layout="row" layout-align="start center" class="margin-top-20">
+  <div flex class="flex-20 depenses padding-left margin-right-4" layout="row" layout-align="start center">Dépenses</div>
+  <div flex class="flex"></div>
+</div>
+
+<div ng-repeat="depense in ctrl.depenses">
+  <div layout="row" layout-align="start center">
+    <div flex class="flex-20 padding-left depense-list-title margin-right-4" layout="row" layout-align="start center">
+      <md-icon md-svg-src="{{depense.expandIconUrl}}" class="s24" aria-label="more or less" ng-click="ctrl.onClickExpandToggle(depense)"></md-icon>
+      {{depense.value}}
+    </div>
+    <div flex class="flex depense-list-title" layout="row" layout-align="end center" ng-repeat="(key, value) in depense.totalMonthly"> {{value}} <span ng-if="value">€</span></div>
+  </div>
+  <div layout="row" layout-align="start center" ng-repeat="material in depense.materials" ng-show="depense.expandStatus">
+    <div flex class="flex-20 padding-left-50 depense-list margin-right-4" layout="row" layout-align="start center">{{material.name}}</div>
+    <div flex class="flex depense-list" layout="row" layout-align="end center" ng-repeat="(key, value) in material.months">
+      {{value}} <span ng-if="value">€</span>
+    </div>
+  </div>
+</div>
+<div layout="row" layout-align="start center" class="margin-top-5">
+  <div flex class="flex-20 total-depense padding-left margin-right-4" layout="row" layout-align="start center">
+    TOTAL CHARGE MONL
+  </div>
+  <div flex class="flex total-depense" layout="row" layout-align="end center" ng-repeat="report in ctrl.monthlyReport"> {{report.totalDepenses}} €</div>
+</div>
+<div layout="row" layout-align="start center">
+  <div flex class="flex-20 total-depense padding-left margin-right-4" layout="row" layout-align="start center">
+    TOTAL CHARGE CUMULAN
+  </div>
+  <div flex class="flex total-depense" layout="row" layout-align="end center" ng-repeat="report in ctrl.monthlyReport"> {{report.totalDepensesCumulan}} €</div>
+</div>

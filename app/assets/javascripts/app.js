@@ -1,3 +1,4 @@
+
 (function () {
   'use strict';
   angular
@@ -6,17 +7,25 @@
       function($mdThemingProvider, $stateProvider, $urlRouterProvider, $locationProvider) {
         $mdThemingProvider.theme('default')
           .primaryPalette('brown')
-          .accentPalette('red');
+          .accentPalette('green', {
+            "default": '600'
+          });
         $urlRouterProvider.otherwise('/');
 
         $stateProvider.state('home', {
           url: '/',
-          controller: 'HomeController',
-          controllerAs: 'HomeCtrl',
-          templateUrl: 'views/home.html'
+          controller: 'AppController',
+          controllerAs: 'ctrl',
+          templateUrl: 'index.html'
         });
       }
-    ]);
+    ])
+    .controller('AppController', [ function($mdDialog) {
+      var _init, vm;
+      vm = this;
+      vm.searchOptions = ['a', 'b', 'c']
+      vm.selectSearch  = vm.searchOptions[0]
+    }]);
 })();
 
 var pageLoad;
