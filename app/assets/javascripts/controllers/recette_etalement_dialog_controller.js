@@ -7,7 +7,7 @@
         vm.parentScope = parentScope;
         vm.group = parentScope.group;
         vm.recette = parentScope.recette;
-        vm.key = parentScope.key;
+        vm.month = new Date(parentScope.month);
         vm.value = parentScope.value;
         vm.fois = parentScope.fois;
         vm.newRecettes = [];
@@ -18,14 +18,15 @@
             var object = {
               percentage: 50,
               value: vm.value/2,
-              month: vm.key
+              month: new Date(vm.month.getFullYear(), vm.month.getMonth() + i, vm.month.getDate())
             }
             vm.newRecettes.push(object);
           }
         };
 
-        vm.cancel = function() {
-          $mdDialog.cancel();
+        vm.cancel = function(e) {
+          e.preventDefault()
+          $mdDialog.hide('close');
         }
 
         _init();

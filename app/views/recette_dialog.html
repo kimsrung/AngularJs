@@ -17,10 +17,10 @@
             <label>Valeur</label>
             <input ng-model="ctrl.value">
           </md-input-container>
-          <md-input-container>
+          <div>
             <span>Echéance</span>
-            <md-datepicker ng-model="ctrl.month" md-placeholder="Enter date"></md-datepicker>
-          </md-input-container>
+            <md-datepicker ng-model="ctrl.month" md-placeholder="Enter date" class="date-picker"></md-datepicker>
+          </div>
           <md-button class="md-raised md-accent" ng-click="ctrl.search()" type="button" aria-label="valider">Valider</md-button>
         </div>
       </div>

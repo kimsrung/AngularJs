@@ -10,50 +10,52 @@
   <script src="/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
 </head>
-<body ng-controller="AppController as ctrl">
-  <div layout="row" layout-align="start center" class="md-padding">
-    <img ng-src="assets/images/logo.png" class="logo-image" alt="logo">
-    <div flex class="flex"></div>
-    <div class="box-wrapper">
-      <div class="search-title">Printer</div>
-      <div layout="row">
-        <md-input-container>
-          <md-select ng-model="ctrl.selectSearch">
-            <md-option ng-repeat="option in ctrl.searchOptions" value="{{option}}">
-              {{option}}
-            </md-option>
-          </md-select>
-        </md-input-container>
+<body>
+  <md-content class="flex layout layout-column layout-fill" flex ng-controller="AppController as ctrl">
+    <div layout="row" layout-align="start center" class="md-padding">
+      <img ng-src="assets/images/logo.png" class="logo-image" alt="logo">
+      <div flex class="flex"></div>
+      <div class="box-wrapper">
+        <div class="search-title">Printer</div>
+        <div layout="row">
+          <md-input-container>
+            <md-select ng-model="ctrl.selectSearch">
+              <md-option ng-repeat="option in ctrl.searchOptions" value="{{option}}">
+                {{option}}
+              </md-option>
+            </md-select>
+          </md-input-container>
 
-        <md-input-container>
-          <input ng-model="ctrl.inputSearch">
-        </md-input-container>
-        <md-button class="md-raised md-accent btn-search" ng-click="ctrl.search()">Primary</md-button>
+          <md-input-container>
+            <input ng-model="ctrl.inputSearch">
+          </md-input-container>
+          <md-button class="md-raised md-accent btn-search" ng-click="ctrl.search()">Primary</md-button>
+        </div>
       </div>
+      <div flex class="flex-20"></div>
     </div>
-    <div flex class="flex-20"></div>
-  </div>
-  <div class="md-padding">
-    <md-tabs md-dynamic-height md-border-bottom>
-      <md-tab label="Vue d’ensemble">
-        <div layout="column" ng-include="'views/home.html'" ng-controller="HomeController as ctrl"></div>
-      </md-tab>
-      <md-tab label="Opérations">
-        <md-content class="md-padding" layout="column" ng-include="'views/operation.html'" ng-controller="OperationController as ctrl">
-        </md-content>
-      </md-tab>
-      <md-tab label="Autres recettes">
-        <md-content class="md-padding">
-          <h1 class="md-display-2">Autres recettes</h1>
-        </md-content>
-      </md-tab>
-      <md-tab label="Charges">
-        <md-content class="md-padding">
-          <h1 class="md-display-2">Charges</h1>
-        </md-content>
-      </md-tab>
-    </md-tabs>
-  </div>
+    <div class="md-padding">
+      <md-tabs md-dynamic-height md-border-bottom>
+        <md-tab label="Vue d’ensemble">
+          <div layout="column" ng-include="'views/home.html'" ng-controller="HomeController as ctrl"></div>
+        </md-tab>
+        <md-tab label="Opérations">
+          <md-content class="md-padding" layout="column" ng-include="'views/operation.html'" ng-controller="OperationController as ctrl">
+          </md-content>
+        </md-tab>
+        <md-tab label="Autres recettes">
+          <md-content class="md-padding">
+            <h1 class="md-display-2">Autres recettes</h1>
+          </md-content>
+        </md-tab>
+        <md-tab label="Charges">
+          <md-content class="md-padding">
+            <h1 class="md-display-2">Charges</h1>
+          </md-content>
+        </md-tab>
+      </md-tabs>
+    </div>
+  </md-content>
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->

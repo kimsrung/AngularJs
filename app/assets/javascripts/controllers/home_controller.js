@@ -55,13 +55,14 @@
       return recettes.expandIconUrl = recettes.expandStatus == true ? 'assets/images/ic_expand_less.svg' : 'assets/images/ic_expand_more.svg';
     };
 
-    vm.updateRecetteValue = function(e, group, recette, key, value) {
+    vm.updateRecetteValue = function(e, group, recette, month, value) {
       $mdDialog.show({
         targetEvent: e,
-        locals: { parentScope: vm, group: group, recette: recette, key: key, value: value },
+        parent: angular.element(document.body),
+        locals: { parentScope: vm, group: group, recette: recette, month: month, value: value },
+        templateUrl: 'views/recette_dialog.html',
         controller: 'RecetteDialogController',
         controllerAs: 'ctrl',
-        templateUrl: 'views/recette_dialog.html',
         clickOutsideToClose: false
       })
       .then(function(result) {
