@@ -3,30 +3,33 @@
   <div flex class="flex"></div>
 </div>
 
-<div ng-repeat="recette in ctrl.recettes">
+<div ng-repeat="group in ctrl.recetteGroups">
   <div layout="row" layout-align="start center">
     <div flex class="flex-20 padding-left recette-list-title margin-right-4" layout="row" layout-align="start center">
-      <md-icon md-svg-src="{{recette.expandIconUrl}}" class="s24" aria-label="more or less" ng-click="ctrl.onClickExpandToggle(recette)"></md-icon>
-      {{recette.value}}
+      <md-icon md-svg-src="{{group.expandIconUrl}}" class="s24" aria-label="more or less" ng-click="ctrl.onClickExpandToggle(group)"></md-icon>
+      {{group.name}}
     </div>
-    <div flex class="flex recette-list-title" layout="row" layout-align="end center" ng-repeat="(key, value) in recette.totalMonthly"> {{value}} <span ng-if="value">€</span></div>
+    <div flex class="flex recette-list-title" layout="row" layout-align="end center" ng-repeat="(key, value) in group.totalMonthly"> {{value}} <span ng-if="value">€</span></div>
   </div>
-  <div layout="row" layout-align="start center" ng-repeat="material in recette.materials" ng-show="recette.expandStatus">
-    <div flex class="flex-20 padding-left-50 recette-list margin-right-4" layout="row" layout-align="start center">{{material.name}}</div>
-    <div flex class="flex recette-list" layout="row" layout-align="end center" ng-repeat="(key, value) in material.months">
-      {{value}} <span ng-if="value">€</span>
+  <div ng-repeat="recette in group.collections">
+    <div layout="row" layout-align="start center"  ng-show="group.expandStatus">
+      <div flex class="flex-20 recette-list margin-right-4 padding-left" layout="row" layout-align="start center">{{recette.name}}</div>
+      <div flex class="flex recette-list" layout="row" layout-align="end center" ng-repeat="(key, value) in recette.months">
+        <span ng-click="ctrl.updateRecetteValue(group, recette, key, value)">{{value}}</span>
+        <span ng-if="value">€</span>
+      </div>
     </div>
   </div>
 </div>
 <div layout="row" layout-align="start center" class="margin-top-5">
   <div flex class="flex-20 total-recette padding-left margin-right-4" layout="row" layout-align="start center">
-    TOTAL RECETTES MONL
+    TOTAL RECETTES MOIS
   </div>
-  <div flex class="flex total-recette" layout="row" layout-align="end center" ng-repeat="report in ctrl.monthlyReport"> {{report.totalRecettes}} €</div>
+  <div flex class="flex total-recette" layout="row" layout-align="end center" ng-repeat="report in ctrl.monthlyReport"> {{report.totalRecettes}}€</div>
 </div>
 <div layout="row" layout-align="start center">
   <div flex class="flex-20 total-recette padding-left margin-right-4" layout="row" layout-align="start center">
-    TOTAL RECETTES CUMULAN
+    TOTAL RECETTES CUMUL AN
   </div>
-  <div flex class="flex total-recette" layout="row" layout-align="end center" ng-repeat="report in ctrl.monthlyReport"> {{report.totalRecettesCumulan}} €</div>
+  <div flex class="flex total-recette" layout="row" layout-align="end center" ng-repeat="report in ctrl.monthlyReport"> {{report.totalRecettesCumulan}}€</div>
 </div>

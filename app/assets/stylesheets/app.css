@@ -2,14 +2,18 @@
   width: 100px;
   margin: 16px 24px;
 }
+.center-loading {
+  height: 500px;
+}
 
 .btn-search {
   margin-bottom: 26px;
 }
 
 .search-wrapper {
-  border: 1px solid #aaa;
+  margin-top: 10px;
   padding: 5px 16px;
+  border: 1px solid #aaa;
 }
 
 .search-title {
@@ -47,6 +51,7 @@
 }
 
 .grid-view {
+  font-size: 13px;
   font-weight: 500;
 }
 
@@ -66,7 +71,7 @@
 
 .recette-list-title {
   height: 42px;
-  padding-right: 16px;
+  padding-right: 1%;
   border: 1px solid #fff;
   background-color: #BDBDBD;
 }
@@ -75,14 +80,14 @@
   color: #fff;
   height: 42px;
   border: 1px solid;
-  padding-right: 16px;
+  padding-right: 1%;
   background-color: #43A047;
 }
 
 .total-recette {
   height: 42px;
   border: 1px solid #43A047;
-  padding-right: 16px;
+  padding-right: 1%;
 }
 
 .depenses{
@@ -94,7 +99,7 @@
 
 .depense-list-title {
   height: 42px;
-  padding-right: 16px;
+  padding-right: 1%;
   border: 1px solid #fff;
   background-color: #BDBDBD;
 }
@@ -103,20 +108,20 @@
   color: #fff;
   height: 42px;
   border: 1px solid;
-  padding-right: 16px;
+  padding-right: 1%;
   background-color: #FFC107;
 }
 
 .total-depense {
   height: 42px;
   border: 1px solid #FFC107;
-  padding-right: 16px;
+  padding-right: 1%;
 }
 
 .total-transition {
   height: 42px;
   border: 1px solid #E53935;
-  padding-right: 16px;
+  padding-right: 1%;
 }
 
 md-icon {

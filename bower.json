@@ -9,7 +9,7 @@
   "dependencies": {
     "jquery": "~2.1.1",
     "angular-resource": "1.4.4",
-    "angular-material": "0.11.0-rc2-master-c0c52a8",
+    "angular-material": "0.11.2-master-7b91b60",
     "angular-ui-router": "~0.2.15",
     "angular-loader": "~1.4.0",
     "angular-mocks": "~1.4.0",

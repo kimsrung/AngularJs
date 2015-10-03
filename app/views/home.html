@@ -1,56 +1,61 @@
-<div layout="row" layout-align="start center" class="margin-top-20">
-  <md-input-container class="md-padding">
-    <label>Probabilité minimale recette</label>
-    <md-select ng-model="ctrl.pmr" class="select-filter">
-      <md-option ng-repeat="option in ctrl.pmrOptions" value="{{option}}">
-        {{option}}
-      </md-option>
-    </md-select>
-
-  </md-input-container>
-  <md-input-container class="md-padding">
-    <label>Probabilité minimale dépense</label>
-    <md-select ng-model="ctrl.pmd" class="select-filter">
-      <md-option ng-repeat="option in ctrl.pmdOptions" value="{{option}}">
-        {{option}}
-      </md-option>
-    </md-select>
-  </md-input-container>
+<div layout="row" layout-align="center center" ng-show="ctrl.loading" class="center-loading">
+  <md-progress-circular md-mode="indeterminate" class="md-accent"></md-progress-circular>
 </div>
+<div ng-hide="ctrl.loading">
+  <div layout="row" layout-align="start center" class="margin-top-20">
+    <md-input-container class="md-padding">
+      <label>Probabilité minimale recette</label>
+      <md-select ng-model="ctrl.pmr" class="select-filter" ng-change="ctrl.resetRecettes()">
+        <md-option ng-repeat="option in ctrl.pmrOptions" value="{{option}}">
+          {{option}}
+        </md-option>
+      </md-select>
 
-<div class="grid-view">
-  <div layout="row" layout-align="center center" class="md-padding">
-    <span flex class="flex-20" ng-repeat="edition in ctrl.editions">
-      <md-button ng-click="">{{edition.value}}</md-button>
-    </span>
-    <span flex class="flex-20"></span>
+    </md-input-container>
+    <md-input-container class="md-padding">
+      <label>Probabilité minimale dépense</label>
+      <md-select ng-model="ctrl.pmd" class="select-filter" ng-change="ctrl.resetDepenses()">
+        <md-option ng-repeat="option in ctrl.pmdOptions" value="{{option}}">
+          {{option}}
+        </md-option>
+      </md-select>
+    </md-input-container>
   </div>
 
-  <div layout="row" layout-align="start center">
-    <div flex class="flex-20 list-date padding-left margin-right-4" layout="row" layout-align="start center">
-      POSTES
+  <div class="grid-view">
+    <div layout="row" layout-align="center center" class="md-padding">
+      <span flex class="flex-20" ng-repeat="edition in ctrl.editions">
+        <md-button ng-click="">{{edition.value}}</md-button>
+      </span>
+      <span flex class="flex-20"></span>
     </div>
-    <div flex class="flex list-date" layout="row" layout-align="center center" ng-repeat="report in ctrl.monthlyReport"> {{report.month}} </div>
-  </div>
-  <div layout="column" ng-include="'views/_recettes.html'"></div>
-  <div layout="column" ng-include="'views/_depenses.html'"></div>
 
-  <div layout="row" layout-align="start center" class="margin-top-30">
-    <div flex class="flex-20 total-transition padding-left margin-right-4" layout="row" layout-align="start center">
-      SOLIDE TRANSITION MONL
+    <div layout="row" layout-align="start center">
+      <div flex class="flex-20 list-date padding-left margin-right-4" layout="row" layout-align="start center">
+        POSTES
+      </div>
+      <div flex class="flex list-date" layout="row" layout-align="center center" ng-repeat="report in ctrl.monthlyReport"> {{report.month}} </div>
     </div>
-    <div flex class="flex total-transition" layout="row" layout-align="end center" ng-repeat="report in ctrl.monthlyReport"> {{report.totaltransitions}} €</div>
-  </div>
-  <div layout="row" layout-align="start center">
-    <div flex class="flex-20 total-transition padding-left margin-right-4" layout="row" layout-align="start center">
-      SOLIDE TRANSITION CUMULAN
+    <div layout="column" ng-include="'views/_recettes.html'"></div>
+    <div layout="column" ng-include="'views/_depenses.html'"></div>
+
+    <div layout="row" layout-align="start center" class="margin-top-30">
+      <div flex class="flex-20 total-transition padding-left margin-right-4" layout="row" layout-align="start center">
+        SOLIDE TRANSITION MONL
+      </div>
+      <div flex class="flex total-transition" layout="row" layout-align="end center" ng-repeat="report in ctrl.monthlyReport"> {{report.totaltransitions}}€</div>
     </div>
-    <div flex class="flex total-transition" layout="row" layout-align="end center" ng-repeat="report in ctrl.monthlyReport"> {{report.totaltransitionsCumulan}} €</div>
-  </div>
-  <div layout="row" layout-align="start center">
-    <div flex class="flex-20 total-transition padding-left margin-right-4" layout="row" layout-align="start center">
-      RESULT ECONOMIC
+    <div layout="row" layout-align="start center">
+      <div flex class="flex-20 total-transition padding-left margin-right-4" layout="row" layout-align="start center">
+        SOLIDE TRANSITION CUMULAN
+      </div>
+      <div flex class="flex total-transition" layout="row" layout-align="end center" ng-repeat="report in ctrl.monthlyReport"> {{report.totaltransitionsCumulan}}€</div>
     </div>
-    <div flex class="flex total-transition" layout="row" layout-align="end center" ng-repeat="report in ctrl.monthlyReport"> {{report.finalResult}} €</div>
+    <div layout="row" layout-align="start center">
+      <div flex class="flex-20 total-transition padding-left margin-right-4" layout="row" layout-align="start center">
+        RESULT ECONOMIC
+      </div>
+      <div flex class="flex total-transition" layout="row" layout-align="end center" ng-repeat="report in ctrl.monthlyReport"> {{report.finalResult}}€</div>
+    </div>
   </div>
 </div>

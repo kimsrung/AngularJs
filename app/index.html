@@ -8,9 +8,10 @@
   <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css"/>
   <link rel="stylesheet" href="assets/stylesheets/app.css">
   <script src="/bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
 </head>
 <body ng-controller="AppController as ctrl">
-  <div layout="row" layout-align="start center">
+  <div layout="row" layout-align="start center" class="md-padding">
     <img ng-src="assets/images/logo.png" class="logo-image" alt="logo">
     <div flex class="flex"></div>
     <div class="search-wrapper">
@@ -65,8 +66,10 @@
   <script src="/bower_components/angular-animate/angular-animate.js"></script>
   <script src="/bower_components/angular-material/angular-material.js"></script>
   <script src="assets/javascripts/app.js"></script>
+  <script src="assets/javascripts/factories/factory.js"></script>
   <script src="assets/javascripts/controllers/home_controller.js"></script>
   <script src="assets/javascripts/controllers/operation_controller.js"></script>
+  <script src="assets/javascripts/controllers/recette_dialog_controller.js"></script>
 
 </body>
 </html>

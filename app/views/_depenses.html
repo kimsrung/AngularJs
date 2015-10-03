@@ -3,30 +3,30 @@
   <div flex class="flex"></div>
 </div>
 
-<div ng-repeat="depense in ctrl.depenses">
+<div ng-repeat="group in ctrl.depenseGroups">
   <div layout="row" layout-align="start center">
     <div flex class="flex-20 padding-left depense-list-title margin-right-4" layout="row" layout-align="start center">
-      <md-icon md-svg-src="{{depense.expandIconUrl}}" class="s24" aria-label="more or less" ng-click="ctrl.onClickExpandToggle(depense)"></md-icon>
-      {{depense.value}}
+      <md-icon md-svg-src="{{group.expandIconUrl}}" class="s24" aria-label="more or less" ng-click="ctrl.onClickExpandToggle(group)"></md-icon>
+      {{group.name}}
     </div>
-    <div flex class="flex depense-list-title" layout="row" layout-align="end center" ng-repeat="(key, value) in depense.totalMonthly"> {{value}} <span ng-if="value">€</span></div>
+    <div flex class="flex depense-list-title" layout="row" layout-align="end center" ng-repeat="(key, value) in group.totalMonthly"> {{value}} <span ng-if="value">€</span></div>
   </div>
-  <div layout="row" layout-align="start center" ng-repeat="material in depense.materials" ng-show="depense.expandStatus">
-    <div flex class="flex-20 padding-left-50 depense-list margin-right-4" layout="row" layout-align="start center">{{material.name}}</div>
-    <div flex class="flex depense-list" layout="row" layout-align="end center" ng-repeat="(key, value) in material.months">
-      {{value}} <span ng-if="value">€</span>
+  <div layout="row" layout-align="start center" ng-repeat="depense in group.collections" ng-show="group.expandStatus">
+    <div flex class="flex-20 padding-left depense-list margin-right-4" layout="row" layout-align="start center">{{depense.name}}</div>
+    <div flex class="flex depense-list" layout="row" layout-align="end center" ng-repeat="(key, value) in depense.months">
+      {{value}}<span ng-if="value">€</span>
     </div>
   </div>
 </div>
 <div layout="row" layout-align="start center" class="margin-top-5">
   <div flex class="flex-20 total-depense padding-left margin-right-4" layout="row" layout-align="start center">
-    TOTAL CHARGE MONL
+    TOTAL CHARGE MOIS
   </div>
-  <div flex class="flex total-depense" layout="row" layout-align="end center" ng-repeat="report in ctrl.monthlyReport"> {{report.totalDepenses}} €</div>
+  <div flex class="flex total-depense" layout="row" layout-align="end center" ng-repeat="report in ctrl.monthlyReport"> {{report.totalDepenses}}€</div>
 </div>
 <div layout="row" layout-align="start center">
   <div flex class="flex-20 total-depense padding-left margin-right-4" layout="row" layout-align="start center">
-    TOTAL CHARGE CUMULAN
+    TOTAL CHARGE CUMU LAN
   </div>
-  <div flex class="flex total-depense" layout="row" layout-align="end center" ng-repeat="report in ctrl.monthlyReport"> {{report.totalDepensesCumulan}} €</div>
+  <div flex class="flex total-depense" layout="row" layout-align="end center" ng-repeat="report in ctrl.monthlyReport"> {{report.totalDepensesCumulan}}€</div>
 </div>
