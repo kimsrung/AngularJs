@@ -10,22 +10,26 @@
     </div>
   </md-toolbar>
   <md-dialog-content>
-    <div ng-repeat="newRecette in ctrl.newRecettes">
-      <div>Echéance {{$index}}</div>
+    <div class="margin-top-30" ng-repeat="newRecette in ctrl.newRecettes">
+      <div>Echéance {{$index + 1}}</div>
       <div class="box-wrapper">
         <div layout="column">
-          <md-input-container>
-            <input ng-model="ctrl.newRecette.percentage[$index]">
-            <input ng-model="ctrl.newRecette.value[$index]">
-          </md-input-container>
-          <md-input-container>
-            <span>Echéance</span>
-            <md-datepicker ng-model="ctrl.newRecette.month" md-placeholder="Enter date"></md-datepicker>
-          </md-input-container>
-          <md-button class="md-raised md-accent" ng-click="ctrl.submit()">Valider</md-button>
+          <div layout="row" layout-align="start center">
+            <md-input-container>
+              <input ng-model="ctrl.newRecette.percentage[$index]">
+            </md-input-container>
+            <span class="label-percentage">%</span>
+            <md-input-container>
+              <input ng-model="ctrl.newRecette.value[$index]">
+            </md-input-container>
+          </div>
+          <md-datepicker ng-model="ctrl.newRecette.month" md-placeholder="Enter date"></md-datepicker>
         </div>
       </div>
     </div>
   </md-dialog-content>
+  <div class="md-actions" layout="row">
+    <md-button class="md-raised md-accent" ng-click="ctrl.submit()" aria-label="valider">Valider</md-button>
+  </div>
   </form>
 </md-dialog>

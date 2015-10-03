@@ -50,6 +50,10 @@
   padding-left: 50px;
 }
 
+.label-percentage {
+  margin: 0 30px 0 5px;
+}
+
 .grid-view {
   font-size: 13px;
   font-weight: 500;

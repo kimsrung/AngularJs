@@ -21,7 +21,7 @@
             <span>Echéance</span>
             <md-datepicker ng-model="ctrl.month" md-placeholder="Enter date"></md-datepicker>
           </md-input-container>
-          <md-button class="md-raised md-accent" ng-click="ctrl.search()" type="button">Valider</md-button>
+          <md-button class="md-raised md-accent" ng-click="ctrl.search()" type="button" aria-label="valider">Valider</md-button>
         </div>
       </div>
       <div class="margin-top-30">Etalement</div>
@@ -35,7 +35,7 @@
               <div ng-message="min">must be greater than 1</div>
             </div>
           </md-input-container>
-          <md-button class="md-raised md-accent" ng-click="ctrl.openModify($event)">Etaler</md-button>
+          <md-button class="md-raised md-accent" ng-click="ctrl.openModify($event)" aria-label="etaler">Etaler</md-button>
         </div>
       </div>
     </md-dialog-content>
