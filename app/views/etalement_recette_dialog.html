@@ -1,0 +1,31 @@
+<md-dialog aria-label="Adjusting Recette"  ng-cloak>
+  <form>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <div>{{ctrl.group.name}}-{{ctrl.recette.name}}-Etalement</div>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="ctrl.cancel()">
+        <md-icon md-svg-src="assets/images/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <div ng-repeat="newRecette in ctrl.newRecettes">
+      <div>Echéance {{$index}}</div>
+      <div class="box-wrapper">
+        <div layout="column">
+          <md-input-container>
+            <input ng-model="ctrl.newRecette.percentage[$index]">
+            <input ng-model="ctrl.newRecette.value[$index]">
+          </md-input-container>
+          <md-input-container>
+            <span>Echéance</span>
+            <md-datepicker ng-model="ctrl.newRecette.month" md-placeholder="Enter date"></md-datepicker>
+          </md-input-container>
+          <md-button class="md-raised md-accent" ng-click="ctrl.submit()">Valider</md-button>
+        </div>
+      </div>
+    </div>
+  </md-dialog-content>
+  </form>
+</md-dialog>

@@ -1,24 +1,43 @@
 <md-dialog aria-label="Adjusting Recette"  ng-cloak>
-  <form>
-  <md-toolbar>
-    <div class="md-toolbar-tools">
-      <h2>{{ctrl.recette.value}}-{{ctrl.building.name}}</h2>
-      <span flex></span>
-      <md-button class="md-icon-button" ng-click="ctrl.cancel()">
-        <md-icon md-svg-src="assets/images/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
-      </md-button>
-    </div>
-  </md-toolbar>
-  <md-dialog-content>
-
-  </md-dialog-content>
-  <div class="md-actions" layout="row">
-    <md-button ng-click="answer('not useful')" >
-     Valider
-    </md-button>
-    <md-button ng-click="answer('useful')" style="margin-right:20px;" >
-      Etaler
-    </md-button>
-  </div>
+  <form name="ctrl.form" novalidate="true">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <div>{{ctrl.group.name}}-{{ctrl.recette.name}}</div>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="ctrl.cancel()">
+          <md-icon md-svg-src="assets/images/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content>
+      <div>Modification/Validation</div>
+      <div class="box-wrapper">
+        <div layout="column">
+          <md-input-container>
+            <label>Valeur</label>
+            <input ng-model="ctrl.value">
+          </md-input-container>
+          <md-input-container>
+            <span>Echéance</span>
+            <md-datepicker ng-model="ctrl.month" md-placeholder="Enter date"></md-datepicker>
+          </md-input-container>
+          <md-button class="md-raised md-accent" ng-click="ctrl.search()" type="button">Valider</md-button>
+        </div>
+      </div>
+      <div class="margin-top-30">Etalement</div>
+      <div class="box-wrapper">
+        <div layout="column">
+          <md-input-container>
+            <label>fois</label>
+            <input name="fois" ng-model="ctrl.fois" required min="2" type="number">
+            <div ng-messages="ctrl.form.fois.$error">
+              <div ng-message="required">This is required.</div>
+              <div ng-message="min">must be greater than 1</div>
+            </div>
+          </md-input-container>
+          <md-button class="md-raised md-accent" ng-click="ctrl.openModify($event)">Etaler</md-button>
+        </div>
+      </div>
+    </md-dialog-content>
   </form>
 </md-dialog>

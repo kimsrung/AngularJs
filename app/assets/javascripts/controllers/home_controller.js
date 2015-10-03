@@ -4,12 +4,12 @@
   angular.module('ElgeaApp').controller('HomeController', ['$mdDialog', '$filter', 'factory', function($mdDialog, $filter, factory) {
     var _init, sum, groupReport, vm = this;
     vm.loading = true;
-    vm.pmrOptions = factory.pmrOptions
-    vm.pmdOptions = factory.pmdOptions
-    vm.editions   = factory.editions
-    vm.monthlyReport = factory.monthlyReport
-    vm.recettes   = factory.recettes
-    vm.depenses   = factory.depenses
+    vm.pmrOptions = factory.pmrOptions;
+    vm.pmdOptions = factory.pmdOptions;
+    vm.editions   = factory.editions;
+    vm.monthlyReport = factory.monthlyReport;
+    vm.recettes   = factory.recettes;
+    vm.depenses   = factory.depenses;
 
     function sum (items) {
       return _(items).reduce(function(acc, obj) {
@@ -55,9 +55,10 @@
       return recettes.expandIconUrl = recettes.expandStatus == true ? 'assets/images/ic_expand_less.svg' : 'assets/images/ic_expand_more.svg';
     };
 
-    vm.updateRecetteValue = function(recette, building, key, value) {
+    vm.updateRecetteValue = function(e, group, recette, key, value) {
       $mdDialog.show({
-        locals: { parentScope: vm, recette: recette, building: building, key: key, value: value },
+        targetEvent: e,
+        locals: { parentScope: vm, group: group, recette: recette, key: key, value: value },
         controller: 'RecetteDialogController',
         controllerAs: 'ctrl',
         templateUrl: 'views/recette_dialog.html',
