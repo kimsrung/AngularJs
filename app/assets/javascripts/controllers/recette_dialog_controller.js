@@ -17,7 +17,6 @@
 
         vm.openModify = function(e) {
           if (vm.form.$valid) {
-            $mdDialog.hide();
             $mdDialog.show({
               targetEvent: event,
               parent: angular.element(document.body),
@@ -25,9 +24,6 @@
               templateUrl: 'views/etalement_recette_dialog.html',
               controller: 'RecetteDialogEtalementController',
               controllerAs: 'ctrl'
-            })
-            .then(function(result) {
-
             });
           };
         }

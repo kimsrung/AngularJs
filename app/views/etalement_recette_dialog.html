@@ -16,11 +16,11 @@
         <div layout="column">
           <div layout="row" layout-align="start center">
             <md-input-container aria-label="percentage">
-              <input ng-model="newRecette.percentage">
+              <input ng-model="newRecette.percentage" ng-change="ctrl.updateRecetteValue(newRecette, $index)" ng-model-options="{debounce: 1000}">
             </md-input-container>
             <span class="label-percentage">%</span>
             <md-input-container aria-label="value">
-              <input ng-model="newRecette.value">
+              <input ng-model="newRecette.value" ng-change="ctrl.updateRecettePercentage(newRecette, $index)" ng-model-options="{debounce: 1000}">
             </md-input-container>
           </div>
           <md-datepicker ng-model="newRecette.month" md-placeholder="Enter date"></md-datepicker>
@@ -28,7 +28,10 @@
       </div>
     </div>
   </md-dialog-content>
-  <div class="md-actions" layout="row">
+  <div class="md-actions" layout="row" layout-align="space-between">
+    <div ng-show="ctrl.errorForm.length" class="error">
+      {{ctrl.errorForm}}
+    </div>
     <md-button class="md-raised md-accent" ng-click="ctrl.submit()" aria-label="valider">Valider</md-button>
   </div>
   </form>

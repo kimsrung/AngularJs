@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('ElgeaApp').controller('HomeController', ['$mdDialog', '$filter', 'factory', function($mdDialog, $filter, factory) {
+  angular.module('ElgeaApp').controller('HomeController', ['$rootScope', '$mdDialog', '$filter', 'factory', function($rootScope, $mdDialog, $filter, factory) {
     var _init, sum, groupReport, vm = this;
     vm.loading = true;
     vm.pmrOptions = factory.pmrOptions;
@@ -10,13 +10,14 @@
     vm.monthlyReport = factory.monthlyReport;
     vm.recettes   = factory.recettes;
     vm.depenses   = factory.depenses;
+    vm.modifiedRecettes = []
 
     function sum (items) {
-      return _(items).reduce(function(acc, obj) {
+      return _(items).reduce(function(item, obj) {
         _(obj).each(function(value, key) {
-          acc[key] = (acc[key] ? acc[key] : 0) + (value ? value : 0)
+          item[key] = (item[key] ? item[key] : 0) + (value ? value : 0)
         });
-        return acc;
+        return item;
       }, {});
     }
 
@@ -65,11 +66,6 @@
         controllerAs: 'ctrl',
         clickOutsideToClose: false
       })
-      .then(function(result) {
-
-      }, function() {
-
-      });
     };
 
     vm.resetRecettes = function() {
@@ -83,6 +79,18 @@
       found = $filter('filter')(vm.depenses, { type: vm.pmd});
       vm.depenseGroups = groupReport(found, 'group')
     };
+
+    vm.isRecetteModified = function(recette, month) {
+      recette = $filter('filter')(vm.modifiedRecettes, { name: recette.name })[0]
+      return (angular.isUndefined(recette) ? false : _.contains(recette.modifiedRecetteMonths, month));
+    }
+
+    $rootScope.$on('updateRecettes', function(event, newRecettes, recette) {
+      recette.modifiedRecetteMonths = _.map(newRecettes, function(num, key){ return key; });
+      vm.modifiedRecettes = _.union(vm.modifiedRecettes, [recette]);
+
+      vm.recetteGroups = groupReport(vm.recettes, 'group')
+    });
 
     _init();
 

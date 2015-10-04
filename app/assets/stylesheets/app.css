@@ -135,3 +135,11 @@ md-icon {
 md-icon:hover {
   cursor: pointer;
 }
+
+.error {
+  color: #F44336;
+}
+
+.modified {
+  background-color: #9C27B0;
+}
