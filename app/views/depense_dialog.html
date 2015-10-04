@@ -1,0 +1,58 @@
+<md-dialog aria-label="Adjusting Recette" ng-cloak>
+  <form>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <div>Nouvelle Depense</div>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="ctrl.cancel($event)" type="button">
+        <md-icon md-svg-src="assets/images/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <div layout="column">
+      <md-input-container>
+        <label>Taux de TVA</label>
+        <md-select ng-model="ctrl.tva">
+          <md-option ng-repeat="option in ctrl.TVAOptions" value="{{option}}">
+            {{option}}%
+          </md-option>
+        </md-select>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Montant HT</label>
+        <input ng-model="ctrl.valueHT" type="number" aria-label="value HT">
+      </md-input-container>
+
+      <md-input-container>
+        <label>Montant TTC</label>
+        <input ng-model="ctrl.value" type="number" aria-label="value TTC">
+      </md-input-container>
+
+      <md-input-container>
+        <label>Affichage</label>
+        <md-select ng-model="ctrl.affichage">
+          <md-option ng-repeat="option in ctrl.affichageOptions" value="{{option}}">
+            {{option}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+
+      <md-input-container>
+        <label>Probabilité</label>
+        <md-select ng-model="ctrl.probabilite">
+          <md-option ng-repeat="option in ctrl.pmdOptions" value="{{option}}">
+            {{option}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+
+      <md-datepicker ng-model="ctrl.month" md-placeholder="Enter date"></md-datepicker>
+    </div>
+  </md-dialog-content>
+  <div class="md-actions" layout="row">
+    <md-button class="md-raised md-accent" ng-click="ctrl.submit()" aria-label="valider" type="button">Valider</md-button>
+  </div>
+  </form>
+</md-dialog>

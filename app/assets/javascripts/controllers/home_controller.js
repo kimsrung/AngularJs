@@ -11,6 +11,7 @@
     vm.recettes   = factory.recettes;
     vm.depenses   = factory.depenses;
     vm.modifiedRecettes = []
+    vm.modifiedDepenses = []
 
     function sum (items) {
       return _(items).reduce(function(item, obj) {
@@ -56,13 +57,25 @@
       return recettes.expandIconUrl = recettes.expandStatus == true ? 'assets/images/ic_expand_less.svg' : 'assets/images/ic_expand_more.svg';
     };
 
-    vm.updateRecetteValue = function(e, group, recette, month, value) {
+    vm.openRecetteDialog = function(e, group, recette, month, value) {
       $mdDialog.show({
         targetEvent: e,
         parent: angular.element(document.body),
         locals: { parentScope: vm, group: group, recette: recette, month: month, value: value },
         templateUrl: 'views/recette_dialog.html',
         controller: 'RecetteDialogController',
+        controllerAs: 'ctrl',
+        clickOutsideToClose: false
+      })
+    };
+
+    vm.openDepenseDialog = function(e, group, depense, month, value) {
+      $mdDialog.show({
+        targetEvent: e,
+        parent: angular.element(document.body),
+        locals: { parentScope: vm, group: group, depense: depense, month: month, value: value },
+        templateUrl: 'views/depense_dialog.html',
+        controller: 'DepenseDialogController',
         controllerAs: 'ctrl',
         clickOutsideToClose: false
       })
@@ -83,6 +96,20 @@
     vm.isRecetteModified = function(recette, month) {
       recette = $filter('filter')(vm.modifiedRecettes, { name: recette.name })[0]
       return (angular.isUndefined(recette) ? false : _.contains(recette.modifiedRecetteMonths, month));
+    }
+
+    vm.isDepenseModified = function(depense, month) {
+      depense = $filter('filter')(vm.modifiedDepenses, { name: depense.name })[0]
+      return (angular.isUndefined(depense) ? false : _.contains(depense.modifiedDepenseMonths, month));
+    }
+
+    vm.updateDepense = function(depense, key, value) {
+      depense.months[key] = parseInt(value)
+      if(angular.isUndefined(depense.modifiedDepenseMonths)) { depense.modifiedDepenseMonths = []};
+      if(!_.contains(depense.modifiedDepenseMonths, key)) { depense.modifiedDepenseMonths.push(key) };
+      vm.modifiedDepenses = _.union(vm.modifiedDepenses, [depense])
+
+      vm.depenseGroups = groupReport(vm.depenses, 'group')
     }
 
     $rootScope.$on('updateRecettes', function(event, newRecettes, recette) {

@@ -4,7 +4,7 @@
     <div class="md-toolbar-tools">
       <div>{{ctrl.group.name}}-{{ctrl.recette.name}}-Etalement</div>
       <span flex></span>
-      <md-button class="md-icon-button" ng-click="ctrl.cancel($event)">
+      <md-button class="md-icon-button" ng-click="ctrl.cancel($event)" type="button">
         <md-icon md-svg-src="assets/images/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
       </md-button>
     </div>
@@ -15,12 +15,12 @@
       <div class="box-wrapper">
         <div layout="column">
           <div layout="row" layout-align="start center">
-            <md-input-container aria-label="percentage">
-              <input ng-model="newRecette.percentage" ng-change="ctrl.updateRecetteValue(newRecette, $index)" ng-model-options="{debounce: 1000}">
+            <md-input-container>
+              <input ng-model="newRecette.percentage" ng-change="ctrl.updateRecetteValue(newRecette, $index)" ng-model-options="{debounce: 1000}" type="number" aria-label="percentage">
             </md-input-container>
             <span class="label-percentage">%</span>
-            <md-input-container aria-label="value">
-              <input ng-model="newRecette.value" ng-change="ctrl.updateRecettePercentage(newRecette, $index)" ng-model-options="{debounce: 1000}">
+            <md-input-container>
+              <input ng-model="newRecette.value" ng-change="ctrl.updateRecettePercentage(newRecette, $index)" ng-model-options="{debounce: 1000}" type="number" aria-label="value">
             </md-input-container>
           </div>
           <md-datepicker ng-model="newRecette.month" md-placeholder="Enter date"></md-datepicker>
@@ -32,7 +32,7 @@
     <div ng-show="ctrl.errorForm.length" class="error">
       {{ctrl.errorForm}}
     </div>
-    <md-button class="md-raised md-accent" ng-click="ctrl.submit()" aria-label="valider">Valider</md-button>
+    <md-button class="md-raised md-accent" ng-click="ctrl.submit()" aria-label="valider" type="button">Valider</md-button>
   </div>
   </form>
 </md-dialog>

@@ -4,7 +4,7 @@
       <div class="md-toolbar-tools">
         <div>{{ctrl.group.name}}-{{ctrl.recette.name}}</div>
         <span flex></span>
-        <md-button class="md-icon-button" ng-click="ctrl.cancel()">
+        <md-button class="md-icon-button" ng-click="ctrl.cancel()" type="button">
           <md-icon md-svg-src="assets/images/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
         </md-button>
       </div>
@@ -15,7 +15,7 @@
         <div layout="column">
           <md-input-container>
             <label>Valeur</label>
-            <input ng-model="ctrl.value">
+            <input ng-model="ctrl.value" type="text" aria-label="value">
           </md-input-container>
           <div>
             <span>Echéance</span>
@@ -35,7 +35,7 @@
               <div ng-message="min">must be greater than 1</div>
             </div>
           </md-input-container>
-          <md-button class="md-raised md-accent" ng-click="ctrl.openModify($event)" aria-label="etaler">Etaler</md-button>
+          <md-button class="md-raised md-accent" ng-click="ctrl.openModify($event)" aria-label="etaler" type="button">Etaler</md-button>
         </div>
       </div>
     </md-dialog-content>

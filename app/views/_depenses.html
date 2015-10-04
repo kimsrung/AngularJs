@@ -13,8 +13,11 @@
   </div>
   <div layout="row" layout-align="start center" ng-repeat="depense in group.collections" ng-show="group.expandStatus">
     <div flex class="flex-20 padding-left depense-list margin-right-4" layout="row" layout-align="start center">{{depense.name}}</div>
-    <div flex class="flex depense-list" layout="row" layout-align="end center" ng-repeat="(key, value) in depense.months">
-      {{value}}<span ng-if="value">€</span>
+    <div flex class="flex depense-list" layout="row" layout-align="end center" ng-repeat="(key, value) in depense.months" ng-class="{modified: ctrl.isDepenseModified(depense, key)}">
+      <md-input-container flex class="flex depense-input">
+        <input ng-model="value" ng-change="ctrl.updateDepense(depense, key, value)" ng-model-options="{debounce: 1000}" aria-label="depense" ng-dblclick="ctrl.openDepenseDialog($event, group, depense, key, value)">
+      </md-input-container>
+      <span ng-if="value">€</span>
     </div>
   </div>
 </div>

@@ -136,10 +136,24 @@ md-icon:hover {
   cursor: pointer;
 }
 
+md-dialog {
+  min-width: 350px;
+}
+
 .error {
   color: #F44336;
 }
 
 .modified {
   background-color: #9C27B0;
+}
+
+.depense-input {
+  padding-bottom: 1px;
+}
+
+.depense-input input {
+  color: #fff;
+  border: none;
+  text-align: right;
 }
